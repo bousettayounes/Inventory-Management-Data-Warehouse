@@ -1,6 +1,11 @@
 # Inventory-Management-Data-Warehouse
 This project implements a robust Inventory Management Data Warehouse using modern data engineering tools. It leverages dbt (data build tool) for data transformation and Apache Airflow for orchestration and scheduling.
 
+## Project Architecture
+
+![Project_Architecture](https://github.com/user-attachments/assets/fc7cf6fb-3b02-4666-ae0e-ac9ed71a16cc)
+
+
 This project implements a robust Inventory Management Data Warehouse using modern data engineering tools. It provides a comprehensive solution for managing and analyzing inventory data at scale.
 Tools Used
 
