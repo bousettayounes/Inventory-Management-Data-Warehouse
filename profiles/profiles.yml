@@ -1,0 +1,12 @@
+dbt_project:
+  outputs:
+    dev:
+      dbname: Adventureworks
+      host: dw_designe-postgres_db-1
+      pass: password
+      port: 5432
+      schema: DW
+      threads: 2
+      type: postgres
+      user: yns
+  target: dev

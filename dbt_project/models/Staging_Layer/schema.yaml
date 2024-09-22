@@ -1,0 +1,160 @@
+version: 2
+
+sources:
+  - name: date_dim
+    database: Adventureworks  
+    schema: public
+    tables:
+      - name: calendare
+        column:
+          - name: dateid
+            tests:
+              - not_null
+#------------------------------------
+  - name: warehouse_location
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: location
+        columns:
+          - name: productid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: transactions_infos
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: transactionhistory
+        columns:
+          - name: transactionid
+            tests:
+              - not_null
+#------------------------------------
+  - name: products_infos
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: product
+        columns:
+          - name: productid
+            tests:
+              - not_null
+          - name: productmodelid
+            tests:
+              - not_null
+              - relationships:
+                  to: ref("stg_dim_product_model")
+                  field: productmodelid
+
+#------------------------------------
+  - name: providers
+    database: Adventureworks  
+    schema: purchasing
+    tables:
+      - name: purchaseorderheader
+        columns:
+          - name: purchaseorderid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: vendors
+    database: Adventureworks  
+    schema: purchasing
+    tables:
+      - name: vendor
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: products_sub_category
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: productsubcategory
+        columns:
+          - name: productsubcategoryid
+            tests:
+              - not_null
+          - name: productcategoryid
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('stg_dim_category')  # Reference to stg_dim_category table
+                  field: productcategoryid     
+#------------------------------------
+  - name: product_model
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: productmodel
+        columns:
+          - name: productmodelid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: product_category
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: productcategory
+        columns:
+          - name: productcategoryid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: inventory
+    database: Adventureworks  
+    schema: production
+    tables:
+      - name: productinventory
+        columns:
+          - name: productid
+            tests:
+              - not_null
+              - unique
+          - name: locationid
+            tests:
+              - not_null
+              - unique
+    
+#------------------------------------
+  - name: dim_shipments
+    database: Adventureworks  
+    schema: purchasing
+    tables:
+      - name: shipmethod
+        columns:
+          - name: shipmethodid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: fact_stg_providers
+    database: Adventureworks  
+    schema: purchasing
+    tables:
+      - name: purchaseorderheader
+        columns:
+          - name: purchaseorderid
+            tests:
+              - not_null
+              - unique
+#------------------------------------
+  - name: status
+    database: Adventureworks  
+    schema: public
+    tables:
+      - name: dim_status
+        columns:
+          - name: status_id
+            tests:
+              - not_null
+              - unique
+          

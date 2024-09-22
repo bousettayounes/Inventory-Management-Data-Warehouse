@@ -1,0 +1,25 @@
+name: 'dbt_project'
+version: '1.3.0'
+
+profile: 'dbt_project'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_project:
+    Staging_Layer:
+      schema: staging_dims_schema  
+      +materialized: view 
+
+    Consumption_Layer:
+      schema: consumption_fact_schema  
+      +materialized: table            

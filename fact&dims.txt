@@ -1,0 +1,80 @@
+Dimension Tables:
+
+Product Dimension
+
+Product_ID
+Product_Name
+Product_Category
+Product_Subcategory
+Brand
+Model
+Size
+Color
+Manufacturer
+Supplier_ID (Foreign Key)
+Date_Added
+Status
+Supplier Dimension
+
+Supplier_ID
+Supplier_Name
+Supplier_Contact
+Supplier_Address
+Supplier_Phone
+Supplier_Email
+Supplier_Type
+Country
+Region
+Established_Date
+Warehouse Dimension
+
+Warehouse_ID
+Warehouse_Name
+Warehouse_Location
+Warehouse_Address
+Warehouse_Capacity
+Warehouse_Manager
+Warehouse_Type (e.g., Distribution Center, Storage Facility)
+Warehouse_Region
+Warehouse_Status
+Time Dimension
+
+Time_ID
+Date
+Day
+Month
+Month_Name
+Quarter
+Year
+Day_of_Week
+Day_of_Week_Name
+Week_of_Year
+Is_Weekend
+Fiscal_Year
+Fiscal_Quarter
+Fact Tables:
+
+Inventory Transactions Fact
+
+Transaction_ID
+Product_ID (Foreign Key)
+Warehouse_ID (Foreign Key)
+Supplier_ID (Foreign Key)
+Time_ID (Foreign Key)
+Transaction_Type (e.g., Purchase, Sale, Return)
+Quantity
+Unit_Cost
+Total_Value
+Transaction_Date
+
+
+Inventory Levels Fact
+
+Inventory_Level_ID
+Product_ID (Foreign Key)
+Warehouse_ID (Foreign Key)
+Time_ID (Foreign Key)
+Current_Stock_Level
+Minimum_Stock_Level
+Maximum_Stock_Level
+Stock_Availability_Status

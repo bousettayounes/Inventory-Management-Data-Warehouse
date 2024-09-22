@@ -1,0 +1,14 @@
+myvenv/
+__pycache__/
+logs/
+pg_data/
+postgres_DB/
+*.env
+Architecture/
+jobs/
+*.zip
+install.sql
+install.sh
+*.log
+*.tmp
+/update_csvs.rb

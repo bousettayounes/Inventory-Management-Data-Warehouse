@@ -1,0 +1,64 @@
+version: '3.8'
+x-airflow-common: &airflow-common
+  build:
+    context: .
+    dockerfile: Dockerfile
+  env_file:
+    - airflow.env
+    - airflow_users.env
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+    - ./dbt_project:/opt/airflow/dbt_project
+    - ./profiles:/opt/airflow/profiles
+  depends_on:
+    - postgres
+  networks:
+    - YNS_NETWORK
+#-------------------------------------------------------------------------------------
+services:
+  postgres:
+    image: postgres:14.0
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    networks:
+      - YNS_NETWORK
+#-------------------------------------------------------------------------------------
+  postgres_db:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    environment:
+      POSTGRES_USER: yns
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: Adventureworks
+    ports:
+      - "5432:5432"  
+    volumes:
+      - ./postgres_DB:/var/lib/postgresql/data
+    networks:
+      - YNS_NETWORK
+#-------------------------------------------------------------------------------------
+  webserver:
+    <<: *airflow-common
+    command: webserver
+    ports:
+      - "8080:8080"
+    depends_on:
+      - scheduler
+      - postgres
+#-------------------------------------------------------------------------------------
+  scheduler:
+    <<: *airflow-common
+    command: >
+      bash -c "airflow db migrate &&
+              airflow users create --username $${AIRFLOW_USERNAME} --firstname $${AIRFLOW_FIRSTNAME} --lastname $${AIRFLOW_LASTNAME} --role $${AIRFLOW_ROLE} --email $${AIRFLOW_EMAIL} --password $${AIRFLOW_PASSWORD} &&
+              airflow scheduler"
+
+networks:
+  YNS_NETWORK:
+    driver: bridge

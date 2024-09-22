@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: purchaseorder
+    database: Adventureworks  
+    schema: purchasing
+    tables:
+      - name: purchaseorderheader
+        columns:
+          - name: purchaseorderid
+            tests:
+              - not_null
+              - unique
