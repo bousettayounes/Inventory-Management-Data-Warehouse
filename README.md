@@ -11,6 +11,7 @@ Tools Used
 
 - dbt (data build tool): Used for data transformation, enabling us to write, document, and execute SQL-based data transformations.
 - Apache Airflow: Handles orchestration and scheduling of our data pipelines, ensuring timely and reliable data processing.
+- PostgreSQL: Serves as the primary database for storing and querying our inventory data, providing a powerful and reliable relational database system.
 - Docker: Enables easy local deployment of the entire architecture, ensuring consistency across different environments.
 
 ## Features : 
