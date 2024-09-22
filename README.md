@@ -3,7 +3,7 @@ This project implements a robust Inventory Management Data Warehouse using moder
 
 ## Project Architecture
 
-![Project_Architecture](https://github.com/user-attachments/assets/71d2cc9d-8a23-47e2-b337-a67ff078a6bf)
+![Project_Architecture](https://github.com/user-attachments/assets/9d2cdde6-02f7-4f68-aa35-b599a1dc8821)
 
 
 This project implements a robust Inventory Management Data Warehouse using modern data engineering tools. It provides a comprehensive solution for managing and analyzing inventory data at scale.
