@@ -19,5 +19,8 @@ Apache Airflow: Handles orchestration and scheduling of our data pipelines, ensu
 This Inventory Management Data Warehouse project demonstrates the power of modern data engineering tools in creating a scalable, maintainable, and efficient data solution. By leveraging dbt for transformations and Airflow for orchestration, we've created a robust system that can handle complex inventory data with ease. 
 Whether you're looking to optimize stock levels, analyze product performance, or gain deeper insights into your inventory, this data warehouse provides the foundation you need.
 
-Data Warehouse Schema: 
+## Data Warehouse Schema: 
+
+![inventory_management_DW_designe](https://github.com/user-attachments/assets/51fcd8af-ae59-4f06-8850-d860a2753965)
+
 
