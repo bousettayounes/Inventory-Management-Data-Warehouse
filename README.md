@@ -29,6 +29,5 @@ Whether you're looking to optimize stock levels, analyze product performance, or
 
 ## Data Warehouse Schema: 
 
-![inventory_management_DW_designe](https://github.com/user-attachments/assets/51fcd8af-ae59-4f06-8850-d860a2753965)
-
+![inventory_management_DW_designe drawio](https://github.com/user-attachments/assets/0b603fa1-68bf-458c-8500-5df73bd4f9d6)
 
