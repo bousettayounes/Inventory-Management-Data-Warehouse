@@ -4,8 +4,10 @@ logs/
 pg_data/
 postgres_DB/
 *.env
-Architecture/
+Architecture/*.bkp
+Architecture/*.drawio
 jobs/
+desktop.ini
 *.zip
 install.sql
 install.sh
