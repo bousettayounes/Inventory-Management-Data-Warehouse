@@ -4,6 +4,8 @@ logs/
 pg_data/
 postgres_DB/
 *.env
+profiles/
+*.ico
 Architecture/*.bkp
 Architecture/*.drawio
 jobs/
