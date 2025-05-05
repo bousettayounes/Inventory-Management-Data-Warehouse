@@ -1,3 +1,35 @@
+/*
+Purpose:
+--------
+This script creates a comprehensive date dimension staging view for use throughout the data warehouse.
+It transforms raw calendar data into a rich date dimension with multiple date attributes and
+standardized date representations to support time-based analysis across all fact tables.
+
+Tables Created:
+---------------
+1. Date dimension view with date_id as the unique key
+
+Transformations:
+---------------
+- Formats date_id as YYYYMMDD string for use as a join key
+- Extracts day, month, year components from date values
+- Adds day name and month name for reporting
+- Provides default date values ('1900-01-01') for NULL handling
+- Creates a complete date dimension with multiple time attributes
+
+Dependencies:
+------------
+- source('date_dim', 'calendare'): Raw calendar data from source system
+
+Notes:
+------
+- Implemented as a view rather than a materialized table
+- Uses unique_key='date_id' for consistency across the data warehouse
+- Handles NULL dates with '19000101' date_id and '1900-01-01' date
+- Supports date hierarchies and time-based analysis
+- Critical dimension that connects to multiple fact tables
+*/
+
 {{ 
   config(
     materialized='view',

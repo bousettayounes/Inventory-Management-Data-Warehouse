@@ -1,3 +1,35 @@
+/*
+Purpose:
+--------
+This script creates a materialized fact table for inventory levels as part of a data warehouse implementation.
+It integrates inventory data with warehouse location and date information to provide a complete view of stock availability
+across different locations and time periods.
+
+Tables Created:
+---------------
+1. Fact_Inventory_level (final table with unique inventoryid as primary key)
+
+Transformations:
+---------------
+- Joins inventory data with warehouse locations to add location names
+- Joins with date dimension to add date information
+- Creates synthetic primary key using ROW_NUMBER()
+- Structures data for inventory analysis and reporting
+
+Dependencies:
+------------
+- stg_dim_inventory: Source inventory data
+- stg_dim_warehouse_location: Warehouse location dimension
+- stg_dim_date: Date dimension
+
+Notes:
+------
+- Table is materialized for performance optimization
+- Uses unique_key='inventoryid' for upsert operations
+- The first CTE (Fact_Inventory_level_I) creates the initial structure
+- The second CTE (Fact_Inventory_level) adds date information
+*/
+
 {{ 
   config(
     materialized='table',

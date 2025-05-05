@@ -1,3 +1,36 @@
+/*
+Purpose:
+--------
+This script creates a materialized fact table for provider/vendor purchase orders as part of a data warehouse implementation.
+It transforms and consolidates vendor purchase order data with related dimensions (status, date) to enable
+comprehensive analysis of vendor relationships, order processing, and financial metrics.
+
+Tables Created:
+---------------
+1. fact_providers (final table with unique purchaseorderid as primary key)
+
+Transformations:
+---------------
+- Joins provider data with date dimension to add month information
+- Joins with status dimension to add standardized status information
+- Calculates financial metrics including total_amount_due_in_dollars
+- Final projection includes only essential fields for analysis
+
+Dependencies:
+------------
+- fact_stg_providers: Staging view for provider data
+- stg_dim_date: Date dimension
+- stg_dim_status: Status dimension
+
+Notes:
+------
+- Table is materialized for performance optimization
+- Uses unique_key='purchaseorderid' for upsert operations
+- The first CTE (fact_providers_I) performs date-related joins and calculations
+- The second CTE (fact_providers_II) adds status information
+- Financial calculations handled within the CTEs
+*/
+
 {{ 
   config(
     materialized='table',
@@ -40,7 +73,7 @@ fact_providers_II as (
         fct.sub_total_amount,
         fct.tax_amount,
         fct.delivery_fees,
-        fct.total_amount_due_in_dollars ,
+        fct.total_amount_due_in_dollars,
         fct.dateid,
         fct.month
     from fact_providers_I fct

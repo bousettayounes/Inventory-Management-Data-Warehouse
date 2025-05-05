@@ -1,3 +1,36 @@
+/*
+Purpose:
+--------
+This script creates a staging view for transaction data, integrating transaction history
+with product information and standardizing date formats. It prepares transaction data
+for use in fact tables by providing consistent data types and date representations.
+
+Tables Created:
+---------------
+1. dim_transaction (view with unique transactionid as key)
+
+Transformations:
+---------------
+- Type casting for consistency (INT, VARCHAR, DECIMAL)
+- Joins transaction history with product dimension to add product names
+- Formats dateid in YYYYMMDD format for consistency with date dimension
+- Converts transaction dates to standardized format
+- Handles NULL dates with fallback to '19000101'
+
+Dependencies:
+------------
+- source('transactions_infos', 'transactionhistory'): Raw transaction data
+- stg_dim_products: Product dimension with product names and attributes
+
+Notes:
+------
+- Implemented as a view rather than a materialized table
+- Uses unique_key='transactionid' for consistency
+- Includes transaction type for analysis by transaction category
+- Standardizes financial values with DECIMAL(10,2) for reporting accuracy
+- Core table for transaction analysis and reporting
+*/
+
 {{ 
   config(
     materialized='view',
