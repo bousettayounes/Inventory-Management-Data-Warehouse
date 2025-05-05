@@ -2,3 +2,16 @@
 target/
 dbt_packages/
 logs/
+profiles/
+myvenv/
+checkpoint/
+state/
+postgres_DB/
+jmx_exporter/
+*.drawio.bkp
+*.drawio
+*.bkp
+*.ico
+*.ini
+.desktop.ini
+.*folderico-gray.ico
